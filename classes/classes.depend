@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1515950369 source:c:\users\ilona\documents\c++\classes\main.cpp
+	<iostream>
+	<string>
+	"Personnage.h"
+	"Magicien.h"
+	"Guerrier.h"
+	<ctime>
+	<cstdlib>
+	<vector>
+
+1516292072 c:\users\ilona\documents\c++\classes\personnage.h
+	<string>
+	"Personnage.h"
+	"Arme.h"
+	<iostream>
+
+1516292067 source:c:\users\ilona\documents\c++\classes\personnage.cpp
+	"Personnage.h"
+	<iostream>
+
+1515424782 source:c:\users\ilona\documents\c++\classes\arme.cpp
+	"Arme.h"
+
+1515424799 c:\users\ilona\documents\c++\classes\arme.h
+	<iostream>
+	<string>
+
+1515950608 source:c:\users\ilona\documents\c++\classes\guerrier.cpp
+	"Guerrier.h"
+	<iostream>
+
+1515948364 c:\users\ilona\documents\c++\classes\guerrier.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1515950527 source:c:\users\ilona\documents\c++\classes\magicien.cpp
+	"Magicien.h"
+	<iostream>
+
+1515950106 c:\users\ilona\documents\c++\classes\magicien.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1516696674 source:c:\users\utilisateur\documents\c++\rpg\classes\guerrier.cpp
+	"Guerrier.h"
+	<iostream>
+
+1516699969 c:\users\utilisateur\documents\c++\rpg\classes\guerrier.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1516699803 c:\users\utilisateur\documents\c++\rpg\classes\personnage.h
+	<string>
+	"Personnage.h"
+	"Arme.h"
+	<iostream>
+
+1516698123 c:\users\utilisateur\documents\c++\rpg\classes\arme.h
+	<iostream>
+	<string>
+
+1516696800 source:c:\users\utilisateur\documents\c++\rpg\classes\magicien.cpp
+	"Magicien.h"
+	<iostream>
+
+1516699669 c:\users\utilisateur\documents\c++\rpg\classes\magicien.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1516699945 source:c:\users\utilisateur\documents\c++\rpg\classes\personnage.cpp
+	"Personnage.h"
+	<iostream>
+
+1516629001 source:c:\users\utilisateur\documents\c++\rpg\classes\arme.cpp
+	"Arme.h"
+
+1516698971 source:c:\users\utilisateur\documents\c++\rpg\classes\main.cpp
+	<iostream>
+	<string>
+	"Personnage.h"
+	"Magicien.h"
+	"Guerrier.h"
+	<ctime>
+	<cstdlib>
+	<vector>
+
