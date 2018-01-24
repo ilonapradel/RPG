@@ -56,7 +56,7 @@ int main()
         }
 
         //On dégèle tous les personnages (on est gelé que pendant 1 tour)
-        cout << "Les personnages gelés sont maintenant dégelés ! " << endl;
+        cout << "Les personnages gelés sont maintenant dégelés ! " << endl << endl;
         for (int i(0); i<listePerso.size(); i++)
         {
             listePerso[i]->setGel(false);
@@ -66,69 +66,75 @@ int main()
         persoActif=listePerso[nbRandom];
         cout << "C'est au tour de " << persoActif->getNom() << endl;
 
-        //On choisit l'action à effectuer
-        int action;
-        cout << "Que voulez-vous faire ?" << endl;
-        cout << "0 : Attaquer" << endl;
-        cout << "1 : Boire une potion de vie" << endl;
-        cout << "2 : Changer d'arme" << endl;
-        if (persoActif->getClasse()=="Magicien") //si c'est un magicien, on a des fonctionnalités supplémentaires
+        if (persoActif->estVivant()) //si le personnage choisit est vivant (à terme, il faudra choisir parmi les personnages vivants)
         {
-            cout << "3 : Soigner" << endl;
-            cout << "4 : Lancer une boule de feu" << endl;
-            cout << "5 : Geler l'adversaire" << endl;
-        }
-        cin >> action;
+            //On choisit l'action à effectuer
+            int action;
+            cout << "Que voulez-vous faire ?" << endl;
+            cout << "0 : Attaquer" << endl;
+            cout << "1 : Boire une potion de vie" << endl;
+            cout << "2 : Changer d'arme" << endl;
+            if (persoActif->getClasse()=="Magicien") //si c'est un magicien, on a des fonctionnalités supplémentaires
+            {
+                cout << "3 : Soigner" << endl;
+                cout << "4 : Lancer une boule de feu" << endl;
+                cout << "5 : Geler l'adversaire" << endl;
+            }
+            cin >> action;
 
-        switch (action)
-        {
-        case 0: //Si on veut attaquer
-            cout << "Qui voulez-vous attaquer ?" << endl;
-            //On affiche la liste des persos qu'on peut attaquer
-            for (int i = 0 ; i < listePerso.size() ; i++)
+            switch (action)
             {
-                cout << i << " : " << listePerso[i]->getNom() << endl;
+            case 0: //Si on veut attaquer
+                cout << "Qui voulez-vous attaquer ?" << endl;
+                //On affiche la liste des persos qu'on peut attaquer
+                for (int i = 0 ; i < listePerso.size() ; i++)
+                {
+                    cout << i << " : " << listePerso[i]->getNom() << endl;
+                }
+                //on récupère la cible
+                int cible;
+                cin >> cible;
+                persoActif->attaquer(*listePerso[cible]); // on effectue l'action
+                break;
+            case 1:
+                //on se soigne
+                persoActif->boirePotionDeVie(10);
+                break;
+            case 2: //on change d'arme (paramètres prévus mais pour le moment non implémentés)
+                persoActif->changerArme("Grosse Hache", 50);
+                break;
+            case 3: // même principe que pour attaquer
+                cout << "Qui voulez-vous soigner ?" << endl;
+                for (int i = 0 ; i < listePerso.size() ; i++)
+                {
+                    cout << i << " : " << listePerso[i]->getNom() << endl;
+                }
+                cin >> cible;
+                persoActif->soigner(*listePerso[cible], 20); //en paramètres : la cible et le nombre de points soignés (prise de paramètres non implémentés mais prévus)
+                break;
+            case 4: // même principe que plus haut
+                cout << "Sur qui voulez-vous jeter une boule de feu ?" << endl;
+                for (int i = 0 ; i < listePerso.size() ; i++)
+                {
+                    cout << i << " : " << listePerso[i]->getNom() << endl;
+                }
+                cin >> cible;
+                persoActif->bouleDeFeu(*listePerso[cible], 20, 20); //en paramètres : la cible, la durée du dot et le cout en mana (prise de paramètres non implémentés mais prévus)
+            case 5: //idem
+                cout << "Qui voulez-vous geler ?" << endl;
+                for (int i = 0 ; i < listePerso.size() ; i++)
+                {
+                    cout << i << " : " << listePerso[i]->getNom() << endl;
+                }
+                cin >> cible;
+                persoActif->gel(*listePerso[cible], 20); // en paramètres : cible, cout en mana (même remarque)
+                break;
+            default: //Si on répond autre chose que ce qui est proposé, on ne fait rien.
+                cout << "Ne rien faire" << endl;
             }
-            //on récupère la cible
-            int cible;
-            cin >> cible;
-            persoActif->attaquer(*listePerso[cible]); // on effectue l'action
-            break;
-        case 1:
-            //on se soigne
-            persoActif->boirePotionDeVie(10);
-            break;
-        case 2: //on change d'arme (paramètres prévus mais pour le moment non implémentés)
-            persoActif->changerArme("Grosse Hache", 50);
-            break;
-        case 3: // même principe que pour attaquer
-            cout << "Qui voulez-vous soigner ?" << endl;
-            for (int i = 0 ; i < listePerso.size() ; i++)
-            {
-                cout << i << " : " << listePerso[i]->getNom() << endl;
-            }
-            cin >> cible;
-            persoActif->soigner(*listePerso[cible], 20); //en paramètres : la cible et le nombre de points soignés (prise de paramètres non implémentés mais prévus)
-            break;
-        case 4: // même principe que plus haut
-            cout << "Sur qui voulez-vous jeter une boule de feu ?" << endl;
-            for (int i = 0 ; i < listePerso.size() ; i++)
-            {
-                cout << i << " : " << listePerso[i]->getNom() << endl;
-            }
-            cin >> cible;
-            persoActif->bouleDeFeu(*listePerso[cible], 20, 20); //en paramètres : la cible, la durée du dot et le cout en mana (prise de paramètres non implémentés mais prévus)
-        case 5: //idem
-            cout << "Qui voulez-vous geler ?" << endl;
-            for (int i = 0 ; i < listePerso.size() ; i++)
-            {
-                cout << i << " : " << listePerso[i]->getNom() << endl;
-            }
-            cin >> cible;
-            persoActif->gel(*listePerso[cible], 20); // en paramètres : cible, cout en mana (même remarque)
-            break;
-        default: //Si on répond autre chose que ce qui est proposé, on ne fait rien.
-            cout << "Ne rien faire" << endl;
+        } else {
+            //il manque une boucle pour vérifier que tous les persos ne sont pas morts, sinon fin du jeu (en cours de réflexion)
+            cout << persoActif->getNom() << " ne peut pas jouer, il est mort ! Quelqu'un doit le ressusciter." << endl;
         }
 
         //On vérifie que le joueur veut continuer de jouer

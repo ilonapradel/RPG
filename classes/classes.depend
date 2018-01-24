@@ -89,3 +89,48 @@
 	<cstdlib>
 	<vector>
 
+1516629001 source:c:\users\utilisateur\documents\github\rpg\classes\arme.cpp
+	"Arme.h"
+
+1516698123 c:\users\utilisateur\documents\github\rpg\classes\arme.h
+	<iostream>
+	<string>
+
+1516698971 source:c:\users\utilisateur\documents\github\rpg\classes\main.cpp
+	<iostream>
+	<string>
+	"Personnage.h"
+	"Magicien.h"
+	"Guerrier.h"
+	<ctime>
+	<cstdlib>
+	<vector>
+
+1516699803 c:\users\utilisateur\documents\github\rpg\classes\personnage.h
+	<string>
+	"Personnage.h"
+	"Arme.h"
+	<iostream>
+
+1516700494 c:\users\utilisateur\documents\github\rpg\classes\magicien.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1516700532 c:\users\utilisateur\documents\github\rpg\classes\guerrier.h
+	<iostream>
+	<string>
+	"Personnage.h"
+
+1516699945 source:c:\users\utilisateur\documents\github\rpg\classes\personnage.cpp
+	"Personnage.h"
+	<iostream>
+
+1516700516 source:c:\users\utilisateur\documents\github\rpg\classes\guerrier.cpp
+	"Guerrier.h"
+	<iostream>
+
+1516701440 source:c:\users\utilisateur\documents\github\rpg\classes\magicien.cpp
+	"Magicien.h"
+	<iostream>
+
