@@ -5,6 +5,7 @@
 #include "Personnage.h"
 #include "Arme.h"
 #include <iostream>
+#include <vector>
 
 class Personnage{
 public:
@@ -20,11 +21,8 @@ public:
     void boirePotionDeVie(int nbPdV); //pour se soigner
     void changerArme(std::string nomNouvelleArme, int degatsNouvelleArme); //pour changer d'arme
     bool estVivant() const; //pour vérifier que le perso est vivant
-
-    //Méthodes de magicien
-    virtual void soigner(Personnage &cible, int points); //pour soigner un autre personnage
-    virtual void bouleDeFeu(Personnage &cible, int duree, int coutMana); //pour lancer une boule de feu sur un autre perso
-    virtual void gel(Personnage &cible, int coutMana); //pour geler (incapacitant) un autre perso
+    virtual void afficherPossibilites() const; //affiche les possibilités de jeu du joueur
+    virtual void faireAction(std::vector<Personnage*> listePerso, int numAction); //effectue l'action demandée
 
     //getters
     int getVie() const; //renvoie le nombre de points de vie actuels

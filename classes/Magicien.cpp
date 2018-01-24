@@ -1,6 +1,6 @@
 #include "Magicien.h"
 #include <iostream>
-
+#include <vector>
 
 using namespace std;
 //Constructeurs
@@ -71,6 +71,68 @@ void Magicien::soigner(Personnage &cible, int points) //soigne un autre personna
         }
         cout << cible.getNom() << "a récupéré " << points << "points de vie." << endl;
         cout << "Il a maintenant " << cible.getVie() << " points de vie." << endl;
+    }
+}
+
+void Magicien::afficherPossibilites() const
+{
+    Personnage::afficherPossibilites(); //on rappelle la méthode initiale de personnage pour les actions communes à tout le monde
+    cout << "3 : Soigner" << endl;
+    cout << "4 : Lancer une boule de feu" << endl;
+    cout << "5 : Geler l'adversaire"<< endl;
+}
+
+void Magicien::faireAction(vector<Personnage*> listePerso, int numAction)
+{
+    switch (numAction)
+    {
+        case 0: //Si on veut attaquer
+            cout << "Qui voulez-vous attaquer ?" << endl;
+            //On affiche la liste des persos qu'on peut attaquer
+            for (int i = 0 ; i < listePerso.size() ; i++)
+            {
+                cout << i << " : " << listePerso[i]->getNom() << endl;
+            }
+            //on récupère la cible
+            int cible;
+            cin >> cible;
+            this->attaquer(*listePerso[cible]); // on effectue l'action
+            break;
+        case 1:
+            //on se soigne
+            boirePotionDeVie(10);
+            break;
+        case 2: //on change d'arme (paramètres prévus mais pour le moment non implémentés)
+            changerArme("Grosse Hache", 50);
+            break;
+        case 3: // même principe que pour attaquer
+            cout << "Qui voulez-vous soigner ?" << endl;
+            for (int i = 0 ; i < listePerso.size() ; i++)
+            {
+                cout << i << " : " << listePerso[i]->getNom() << endl;
+            }
+            cin >> cible;
+            soigner(*listePerso[cible], 20); //en paramètres : la cible et le nombre de points soignés (prise de paramètres non implémentés mais prévus)
+            break;
+        case 4: // même principe que plus haut
+            cout << "Sur qui voulez-vous jeter une boule de feu ?" << endl;
+            for (int i = 0 ; i < listePerso.size() ; i++)
+            {
+                cout << i << " : " << listePerso[i]->getNom() << endl;
+            }
+            cin >> cible;
+            bouleDeFeu(*listePerso[cible], 20, 20); //en paramètres : la cible, la durée du dot et le cout en mana (prise de paramètres non implémentés mais prévus)
+        case 5: //idem
+            cout << "Qui voulez-vous geler ?" << endl;
+            for (int i = 0 ; i < listePerso.size() ; i++)
+            {
+                cout << i << " : " << listePerso[i]->getNom() << endl;
+            }
+            cin >> cible;
+            gel(*listePerso[cible], 20); // en paramètres : cible, cout en mana (même remarque)
+            break;
+        default: //Si on répond autre chose que ce qui est proposé, on ne fait rien.
+            cout << "Ne rien faire" << endl;
     }
 }
 

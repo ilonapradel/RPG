@@ -11,13 +11,11 @@ public:
     //Constructeurs
     Guerrier(std::string nom);
 
-    //Méthodes de magicien, virtuelles ici
-    virtual void soigner(Personnage &cible, int points);
-    virtual void bouleDeFeu(Personnage &cible, int duree, int coutMana);
-    virtual void gel(Personnage &cible, int coutMana);
+    //Méthodes
+    void faireAction(std::vector<Personnage*> listePerso, int numAction); //effectue l'action demandée en fonction du numéro
 
     //getter
-    std::string getClasse() const; //renvoie le classe
+    std::string getClasse() const; //renvoie la classe
 
     //Destructeur
     virtual ~Guerrier();

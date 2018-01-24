@@ -1,5 +1,6 @@
 #include "Personnage.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 //Constructeurs         //on initialise m_gel à false pour que le personnage puisse jouer au premier tour
@@ -76,10 +77,18 @@ bool Personnage::estVivant() const //on renvoie si on est vivant ou non
     return m_vie>0;
 }
 
-//Méthodes utilisées dans magicien mais virtuelles ici
-void Personnage::soigner(Personnage& cible, int points){}
-void Personnage::bouleDeFeu(Personnage &cible, int duree, int coutMana){}
-void Personnage::gel(Personnage &cible, int coutMana){}
+void Personnage::afficherPossibilites() const
+{
+    cout << "Que voulez-vous faire ?" << endl;
+    cout << "0 : Attaquer" << endl;
+    cout << "1 : Boire une potion de vie" << endl;
+    cout << "2 : Changer d'arme" << endl;
+}
+
+void Personnage::faireAction(vector<Personnage*> listePerso, int numAction)
+{
+    //virtuelle ici
+}
 
 //getters
 int Personnage::getVie() const //renvoie et affiche le nombre de points de vie actuels
